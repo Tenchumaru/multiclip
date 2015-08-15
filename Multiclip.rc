@@ -1,0 +1,171 @@
+#include <windows.h>
+#include "resource.h"
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
+#ifdef _DEBUG
+ FILEFLAGS VS_FF_DEBUG
+#else
+ FILEFLAGS 0
+#endif
+ FILEOS VOS_NT_WINDOWS32
+ FILETYPE VFT_APP
+ FILESUBTYPE 0
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+#ifdef _UNICODE
+        BLOCK "040904b0" // US English, Unicode
+#else
+        BLOCK "040904e4" // US English, Windows Multilingual
+#endif
+        BEGIN
+            VALUE "CompanyName", "Adrezdi Company"
+            VALUE "FileDescription", "Multiclip application"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "Multiclip"
+            VALUE "LegalCopyright", "Copyright (c) 1997-2008 Adrezdi Company. All rights reserved."
+            VALUE "OriginalFilename", "Multiclip.exe"
+            VALUE "ProductName", "Multiclip"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+#ifdef _UNICODE
+        VALUE "Translation", 1033, 1200 // US English, Unicode
+#else
+        VALUE "Translation", 1033, 1252 // US English, Windows Multilingual
+#endif
+    END
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME   ICON                            "..\..\finger.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "E&xit",                       ID_FILE_EXIT
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About...",                   ID_HELP_ABOUT
+    END
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS 
+BEGIN
+    "?",            ID_HELP_ABOUT,              ASCII,  ALT
+    "/",            ID_HELP_ABOUT,              ASCII,  ALT
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG  22, 17, 230, 75
+STYLE DS_MODALFRAME | DS_SETFONT | WS_CAPTION | WS_POPUP | WS_SYSMENU
+CAPTION "About Multiclip"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,9,16,16
+    LTEXT           "Multiclip Version 1.0",IDC_STATIC,49,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (c) 1997-2008",IDC_STATIC,49,20,119,8,SS_NOPREFIX
+    DEFPUSHBUTTON   "OK",IDOK,173,7,50,14,WS_GROUP
+END
+
+IDR_MAINFRAME DIALOGEX 0, 0, 185, 122
+STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SIZEBOX | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Clipboard Keeper"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "",IDC_BUTTON0,7,19,16,12,BS_BITMAP
+    PUSHBUTTON      "",IDC_BUTTON1,7,35,16,12,BS_BITMAP
+    PUSHBUTTON      "",IDC_BUTTON2,7,51,16,12,BS_BITMAP
+    PUSHBUTTON      "",IDC_BUTTON3,7,67,16,12,BS_BITMAP
+    PUSHBUTTON      "",IDC_BUTTON4,7,83,16,12,BS_BITMAP
+    EDITTEXT        IDC_EDIT0,32,19,128,12,ES_MULTILINE | ES_AUTOHSCROLL | 
+                    ES_WANTRETURN | WS_VSCROLL
+    EDITTEXT        IDC_EDIT1,32,35,128,12,ES_MULTILINE | ES_AUTOHSCROLL | 
+                    ES_WANTRETURN | WS_VSCROLL
+    EDITTEXT        IDC_EDIT2,32,51,128,12,ES_MULTILINE | ES_AUTOHSCROLL | 
+                    ES_WANTRETURN | WS_VSCROLL
+    EDITTEXT        IDC_EDIT3,32,67,128,12,ES_MULTILINE | ES_AUTOHSCROLL | 
+                    ES_WANTRETURN | WS_VSCROLL
+    EDITTEXT        IDC_EDIT4,32,83,128,12,ES_MULTILINE | ES_AUTOHSCROLL | 
+                    ES_WANTRETURN | WS_VSCROLL
+    CONTROL         "",IDC_CHECK0,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,169,
+                    19,16,12
+    CONTROL         "",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,169,
+                    35,16,12
+    CONTROL         "",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,169,
+                    51,16,12
+    CONTROL         "",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,169,
+                    67,16,12
+    CONTROL         "",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,169,
+                    83,16,12
+    LTEXT           "Copy",IDC_STATIC,7,7,17,8
+    LTEXT           "Buffers",IDC_BUFFERS_LABEL,81,7,23,8
+    LTEXT           "Lock",IDC_LOCK_LABEL,166,7,17,8
+    PUSHBUTTON      "&Clear All",IDC_CLEAR_ALL,30,101,50,14
+    CONTROL         "&Always on top",IDC_ALWAYS_ON_TOP,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,95,103,60,10
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDR_MAINFRAME           "Multiclip"
+    IDS_ABOUT               "&About..."
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_COPY                BITMAP  DISCARDABLE     "copy.bmp"
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
