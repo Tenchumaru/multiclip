@@ -251,8 +251,7 @@ static BOOL OnInitDialog(HWND dialog, HWND /*focusWindow*/, LPARAM /*lParam*/) {
 	}
 
 	m_hWndCBChain = SetClipboardViewer(dialog);
-	DWORD lastError = GetLastError();
-	ASSERT(lastError == 0);
+	ASSERT(GetLastError() == 0);
 
 	// Allow the system to set the focus.
 	return TRUE;
