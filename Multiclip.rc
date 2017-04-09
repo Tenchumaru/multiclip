@@ -40,7 +40,7 @@ BEGIN
             VALUE "FileDescription", "Multiclip application"
             VALUE "FileVersion", "1.0.0.1"
             VALUE "InternalName", "Multiclip"
-            VALUE "LegalCopyright", "Copyright (c) 1997-2008 Adrezdi Company. All rights reserved."
+            VALUE "LegalCopyright", "Copyright (c) 1997-2017 Adrezdi Company. All rights reserved."
             VALUE "OriginalFilename", "Multiclip.exe"
             VALUE "ProductName", "Multiclip"
             VALUE "ProductVersion", "1.0.0.1"
@@ -105,7 +105,7 @@ FONT 8, "MS Shell Dlg"
 BEGIN
     ICON            IDR_MAINFRAME,IDC_STATIC,14,9,16,16
     LTEXT           "Multiclip Version 1.0",IDC_STATIC,49,10,119,8,SS_NOPREFIX
-    LTEXT           "Copyright (c) 1997-2008",IDC_STATIC,49,20,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (c) 1997-2017",IDC_STATIC,49,20,119,8,SS_NOPREFIX
     DEFPUSHBUTTON   "OK",IDOK,173,7,50,14,WS_GROUP
 END
 
@@ -113,7 +113,7 @@ IDR_MAINFRAME DIALOGEX 0, 0, 185, 122
 STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
     WS_SIZEBOX | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
-CAPTION "Clipboard Keeper"
+CAPTION "Multiclip"
 FONT 8, "MS Sans Serif"
 BEGIN
     PUSHBUTTON      "",IDC_BUTTON0,7,19,16,12,BS_BITMAP
