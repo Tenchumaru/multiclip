@@ -113,6 +113,7 @@ static void OnClearAll() {
 }
 
 static void OnCopy(UINT nID) {
+	static_assert(IDC_BUTTON4 - IDC_BUTTON0 == _countof(m_edit) - 1, "invalid button ID range");
 	ASSERT(nID >= IDC_BUTTON0 && nID <= IDC_BUTTON4);
 	int i = nID - IDC_BUTTON0;
 	Edit_SetSel(m_edit[i], 0, -1);
@@ -121,6 +122,7 @@ static void OnCopy(UINT nID) {
 }
 
 static void OnLock(UINT nID) {
+	static_assert(IDC_CHECK4 - IDC_CHECK0 == _countof(m_bLock) - 1, "invalid checkbox ID range");
 	ASSERT(nID >= IDC_CHECK0 && nID <= IDC_CHECK4);
 	int i = nID - IDC_CHECK0;
 	m_bLock[i] = !m_bLock[i];
@@ -183,6 +185,7 @@ static void OnCommand(HWND dialog, int commandId, HWND /*control*/, UINT notific
 }
 
 static void OnDrawClipboard(HWND /*dialog*/) {
+	static_assert(_countof(m_bLock) == _countof(m_edit), "count of checkboxes and edits do not match");
 	if(!m_bNoCopy && m_nLocked < 5 && IsClipboardFormatAvailable(CF_TEXT)) {
 		while(m_bLock[m_nIndex]) {
 			m_nIndex = (m_nIndex + 1) % 5;
@@ -240,8 +243,8 @@ static BOOL OnInitDialog(HWND dialog, HWND /*focusWindow*/, LPARAM /*lParam*/) {
 
 	// Add the "About..." menu item to the system menu.  IDM_ABOUT must be
 	// in the system command range.
-	C_ASSERT((IDM_ABOUT & 0xfff0) == IDM_ABOUT);
-	C_ASSERT(IDM_ABOUT < 0xf000);
+	static_assert((IDM_ABOUT & 0xfff0) == IDM_ABOUT, "invalid IDM_ABOUT");
+	static_assert(IDM_ABOUT < 0xf000, "IDM_ABOUT out of range");
 	HMENU systemMenu = GetSystemMenu(dialog, false);
 	if(systemMenu != NULL) {
 		TCHAR aboutString[32];
