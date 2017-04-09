@@ -250,6 +250,7 @@ static BOOL OnInitDialog(HWND dialog, HWND /*focusWindow*/, LPARAM /*lParam*/) {
 		AppendMenu(systemMenu, MF_STRING, IDM_ABOUT, aboutString);
 	}
 
+	SetLastError(0);
 	m_hWndCBChain = SetClipboardViewer(dialog);
 	ASSERT(GetLastError() == 0);
 
