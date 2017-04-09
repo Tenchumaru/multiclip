@@ -18,10 +18,8 @@ static BOOL OnInitDialog(HWND /*dialog*/, HWND /*focusWindow*/, LPARAM /*lParam*
 
 static INT_PTR CALLBACK HandleMessage(HWND dialog, UINT messageId, WPARAM wParam, LPARAM lParam) {
 	switch(messageId) {
-	case WM_COMMAND:
-		return HANDLE_WM_COMMAND(dialog, wParam, lParam, OnCommand), TRUE;
-	case WM_INITDIALOG:
-		return HANDLE_WM_INITDIALOG(dialog, wParam, lParam, OnInitDialog);
+		HANDLE_MSG(dialog, WM_COMMAND, OnCommand), TRUE;
+		HANDLE_MSG(dialog, WM_INITDIALOG, OnInitDialog);
 	}
 	return FALSE;
 }
