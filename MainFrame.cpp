@@ -104,7 +104,7 @@ static void OnChangeCbChain(HWND /*dialog*/, HWND hWndRemove, HWND hWndAfter) {
 }
 
 static void OnClearAll() {
-	for(int i = 0; i < 5; i++) {
+	for(int i = 0; i < _countof(m_bLock); i++) {
 		if(!m_bLock[i]) {
 			Edit_SetSel(m_edit[i], 0, -1);
 			Edit_ReplaceSel(m_edit[i], _T(""));
@@ -186,13 +186,13 @@ static void OnCommand(HWND dialog, int commandId, HWND /*control*/, UINT notific
 
 static void OnDrawClipboard(HWND /*dialog*/) {
 	static_assert(_countof(m_bLock) == _countof(m_edit), "count of checkboxes and edits do not match");
-	if(!m_bNoCopy && m_nLocked < 5 && IsClipboardFormatAvailable(CF_TEXT)) {
+	if(!m_bNoCopy && m_nLocked < _countof(m_bLock) && IsClipboardFormatAvailable(CF_TEXT)) {
 		while(m_bLock[m_nIndex]) {
-			m_nIndex = (m_nIndex + 1) % 5;
+			m_nIndex = (m_nIndex + 1) % _countof(m_bLock);
 		}
 		Edit_SetSel(m_edit[m_nIndex], 0, -1);
 		SendMessage(m_edit[m_nIndex], WM_PASTE, 0, 0);
-		m_nIndex = (m_nIndex + 1) % 5;
+		m_nIndex = (m_nIndex + 1) % _countof(m_edit);
 	}
 	if(m_hWndCBChain != NULL) {
 		::SendMessage(m_hWndCBChain, WM_DRAWCLIPBOARD, 0, 0);
@@ -236,7 +236,7 @@ static BOOL OnInitDialog(HWND dialog, HWND /*focusWindow*/, LPARAM /*lParam*/) {
 	SendMessage(dialog, WM_SETICON, ICON_SMALL, reinterpret_cast<LPARAM>(icon));
 
 	// Set the button images and get the edit controls.
-	for(int i = 0; i < 5; ++i) {
+	for(int i = 0; i < _countof(m_edit); ++i) {
 		SendDlgItemMessage(dialog, IDC_BUTTON0 + i, BM_SETIMAGE, IMAGE_BITMAP, reinterpret_cast<LPARAM>(m_bitmap));
 		m_edit[i] = GetDlgItem(dialog, IDC_EDIT0 + i);
 	}
